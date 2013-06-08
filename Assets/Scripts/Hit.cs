@@ -2,14 +2,15 @@ using UnityEngine;
 using System.Collections;
 
 public class Hit : MonoBehaviour {
+	public float limitVel = 2.0f;
+	public float oldValue = 0.0f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionStay(Collision collisionInfo)
+	{
+		float diff = Mathf.Abs(oldValue - collisionInfo.relativeVelocity.magnitude);
+		if(diff > limitVel) {
+			Destroy(this.gameObject);
+		}
+		oldValue = collisionInfo.relativeVelocity.magnitude;
 	}
 }
