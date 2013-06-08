@@ -22,6 +22,7 @@ public class Ple2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		currentX = transform.position.x + unit;
+		currentY = transform.position.y;
 		if (Mathf.Abs(currentX - startX) > Mathf.Abs(unit * 3.0f)) {
 			unit *= -1.0f;
 		}
